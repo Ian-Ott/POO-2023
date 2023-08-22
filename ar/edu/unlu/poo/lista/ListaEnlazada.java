@@ -20,7 +20,7 @@ public class ListaEnlazada {
 
     public String toString() {
         String acumulador = "";
-        int i = 1;
+        Integer i = 1;
         Nodo nodoAux = primero;
         if (primero == null) {
             acumulador = "lista vacia";
@@ -52,26 +52,25 @@ public class ListaEnlazada {
     }
 
     public void eliminar(int pos){
-        int i = 1;
+
         Nodo nodoAux = primero;
-        while(nodoAux != null){
-            if (pos == i){
-                nodoAux.setDato(nodoAux.getSiguiente());
+        if(pos == 1) {
+            nodoAux.setDato(nodoAux.getSiguiente());
+        }else{
+            for (int i = 0; i < pos - 2; i++){
+                nodoAux = nodoAux.getSiguiente();
             }
-            i++;
+            Nodo nodoTemp = nodoAux.getSiguiente();
+            nodoAux.setSiguiente(nodoTemp.getSiguiente());
         }
     }
+
     public Object recuperar(int pos){
-        int i = 1;
         Nodo nodoAux = primero;
-        while(nodoAux != null){
-            if (pos == i){
-                return nodoAux.getDato();
-            }
-            i++;
+        for (int i = 0; i < pos - 1; i++){
             nodoAux = nodoAux.getSiguiente();
         }
-        return "no se encontro la posicion";
+        return nodoAux.getDato();
     }
 
     public void insertar(Object dato, int pos){
