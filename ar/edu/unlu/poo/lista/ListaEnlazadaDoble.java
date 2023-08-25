@@ -18,7 +18,7 @@ public class ListaEnlazadaDoble {
         }
     }
 
-    public String toString(){
+    /*public String toString(){
         String acumulador = "";
         Integer i = 1;
         NodoEDoble nodoAux = primero;
@@ -34,7 +34,7 @@ public class ListaEnlazadaDoble {
         }
         return acumulador;
     }
-
+*/
     public boolean es_vacia(){return (primero == null);}
 
     public int longitud(){

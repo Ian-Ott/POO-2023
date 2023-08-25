@@ -18,7 +18,7 @@ public class ListaEnlazada {
 
     }
 
-    public String toString() {
+    /*public String toString() {
         String acumulador = "";
         Integer i = 1;
         Nodo nodoAux = primero;
@@ -37,7 +37,7 @@ public class ListaEnlazada {
     public boolean es_vacia(){
         return (primero == null);
     }
-
+*/
     public int longitud(){
         int longitud = 0;
         Nodo nodoAux = primero;

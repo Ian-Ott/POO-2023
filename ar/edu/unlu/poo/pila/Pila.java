@@ -3,15 +3,16 @@ package ar.edu.unlu.poo.pila;
 public class Pila {
     private Nodo tope = null;
 
-    public void apilar(Pila pila,Object dato){
+    public void apilar(Object dato){
         Nodo nuevo_nodo = new Nodo();
         nuevo_nodo.setDato(dato);
         nuevo_nodo.setSiguiente(tope);
         tope = nuevo_nodo;
     }
 
-    public Object desapilar(Pila pila){
-        Nodo tope_Aux = tope; //tal vez se puede dejar el codigo sin usar auxiliar
+    public Object desapilar(){
+        if(es_vacia()){return null;}
+        Nodo tope_Aux = tope;
         Object dato = tope_Aux.getDato();
         tope = tope.getSiguiente();
         return dato;
@@ -23,27 +24,17 @@ public class Pila {
         return tope_Aux.getDato();
     }
 
-    public Boolean es_vacia(Pila pila){
+    public Boolean es_vacia(){
         return tope.getDato() == null;
     }
 
-    public int longitud(Pila pila){
+    public int longitud(){
         int l = 0;
-        Object X;
-        Pila Paux = new Pila();
-        while(!es_vacia(pila)){
-            X = desapilar(pila);
-            apilar(Paux, X);
+        Nodo nodoAux = tope;
+        while(nodoAux != null){
             l++;
-        }
-        while(!es_vacia(Paux)){
-            X = desapilar(Paux);
-            apilar(pila, X);
+            nodoAux = nodoAux.getSiguiente();
         }
         return l;
-    }
-
-    public String toString(){
-        return null;
     }
 }
