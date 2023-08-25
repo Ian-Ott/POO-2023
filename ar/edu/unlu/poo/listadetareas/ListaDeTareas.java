@@ -1,5 +1,7 @@
 package ar.edu.unlu.poo.listadetareas;
 
+import ar.edu.unlu.poo.pila.Nodo;
+
 import java.time.LocalDate;
 
 public class ListaDeTareas {
@@ -55,7 +57,30 @@ public class ListaDeTareas {
     }
 
     public void cambiar_prioridad(int pos_prioridad, int pos){
-
+        NodoTarea nodoAux = prioridad;
+        NodoTarea nueva_prioridad = prioridad;
+        if(pos == 1){
+            prioridad = nueva_prioridad.getSiguiente();
+            for (int i = 0; i < pos_prioridad - 2;i++){
+                nodoAux = nodoAux.getSiguiente();
+            }
+            nueva_prioridad.setSiguiente(nodoAux.getSiguiente());
+            nodoAux.setSiguiente(nueva_prioridad);
+        } else{
+            for (int i = 0; i < pos - 2; i++){
+                nodoAux = nodoAux.getSiguiente();
+            }
+            nueva_prioridad = nodoAux.getSiguiente();
+            //tengo la tarea a la que se quiere cambiar su prioridad
+            nodoAux.setSiguiente(nueva_prioridad.getSiguiente());
+            //ahora busco la nueva posicion de la tarea que se le queria cambiar la posicion
+            nodoAux = prioridad;
+            for (int i = 0; i < pos_prioridad - 2;i++){
+                nodoAux = nodoAux.getSiguiente();
+            }
+            nueva_prioridad.setSiguiente(nodoAux.getSiguiente());
+            nodoAux.setSiguiente(nueva_prioridad);
+        }
     }
 
     public boolean esta_vencida(int pos){
@@ -101,6 +126,6 @@ public class ListaDeTareas {
     }
 
     public void mostrar(){
-
+        //pensar si agregarlo aca o en otro lado
     }
 }
