@@ -3,6 +3,9 @@ package ar.edu.unlu.poo.lista;
 public class ListaEnlazada {
     private Nodo primero = null;
 
+    public boolean es_vacia(){
+        return primero == null;
+    }
     public void agregar(Object dato) {
         Nodo nuevoNodo = new Nodo();
         nuevoNodo.setDato(dato);
@@ -18,7 +21,7 @@ public class ListaEnlazada {
 
     }
 
-    /*public String toString() {
+    public String toString() {
         String acumulador = "";
         Integer i = 1;
         Nodo nodoAux = primero;
@@ -34,10 +37,7 @@ public class ListaEnlazada {
         }
         return acumulador;
     }
-    public boolean es_vacia(){
-        return (primero == null);
-    }
-*/
+
     public int longitud(){
         int longitud = 0;
         Nodo nodoAux = primero;
@@ -53,6 +53,7 @@ public class ListaEnlazada {
 
     public void eliminar(int pos){
 
+        if (es_vacia() || longitud() <= pos){return;}
         Nodo nodoAux = primero;
         if(pos == 1) {
             nodoAux.setDato(nodoAux.getSiguiente());
@@ -67,14 +68,18 @@ public class ListaEnlazada {
 
     public Object recuperar(int pos){
         Nodo nodoAux = primero;
+        if (longitud() > pos){
         for (int i = 0; i < pos - 1; i++){
             nodoAux = nodoAux.getSiguiente();
         }
         return nodoAux.getDato();
+        }
+        return "<La posicion esta fuera de rango>";
     }
 
     public void insertar(Object dato, int pos){
         Nodo nodoAux = primero;
+        if (longitud() > pos){
         Nodo nuevo_nodo = new Nodo();
         nuevo_nodo.setDato(dato);
         if (pos == 1){
@@ -87,5 +92,6 @@ public class ListaEnlazada {
         nuevo_nodo.setSiguiente(nodoAux.getSiguiente());
         nodoAux.setSiguiente(nuevo_nodo);
         }
+    }
     }
 }
