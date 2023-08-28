@@ -41,9 +41,6 @@ public class ListaEnlazada {
     public int longitud(){
         int longitud = 0;
         Nodo nodoAux = primero;
-        if (primero != null){
-            longitud++;
-        }
         while(nodoAux != null){
             longitud++;
             nodoAux = nodoAux.getSiguiente();
@@ -53,10 +50,11 @@ public class ListaEnlazada {
 
     public void eliminar(int pos){
 
-        if (es_vacia() || longitud() <= pos){return;}
+        if (es_vacia() || longitud() <= pos || pos <= 0){return;}
         Nodo nodoAux = primero;
         if(pos == 1) {
-            nodoAux.setDato(nodoAux.getSiguiente());
+            nodoAux.setDato(null);
+            primero = nodoAux.getSiguiente();
         }else{
             for (int i = 0; i < pos - 2; i++){
                 nodoAux = nodoAux.getSiguiente();
@@ -68,7 +66,7 @@ public class ListaEnlazada {
 
     public Object recuperar(int pos){
         Nodo nodoAux = primero;
-        if (longitud() > pos){
+        if (longitud() >= pos && pos > 0){
         for (int i = 0; i < pos - 1; i++){
             nodoAux = nodoAux.getSiguiente();
         }
@@ -79,7 +77,7 @@ public class ListaEnlazada {
 
     public void insertar(Object dato, int pos){
         Nodo nodoAux = primero;
-        if (longitud() > pos){
+        if (longitud() >= pos && pos > 0){
         Nodo nuevo_nodo = new Nodo();
         nuevo_nodo.setDato(dato);
         if (pos == 1){

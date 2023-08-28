@@ -13,7 +13,7 @@ public class Ejemplos_ejercicios {
                 ejemplo_1();
                 break;
             case 2:
-                //ejemplo_2();
+                ejemplo_2();
                 break;
             case 3:
                 //ejemplo_3();
@@ -114,18 +114,21 @@ public class Ejemplos_ejercicios {
         lista.eliminar(6);
         System.out.println("\nEliminados los elementos de la posicion 3 y 6");
         System.out.println("Contenido de la lista: " + lista);
+        System.out.println("como la posicion 6 no existe en la lista no se elimina ningun elemento.");
 
         System.out.println("Recupero elemento de la posicion 2: " + lista.recuperar(2));
         System.out.println("Recupero elemento de la posicion 5: " + lista.recuperar(5));
 
         System.out.println("inserto elementos en la posicion 1 y 6:");
+        lista.insertar(25, 1);
+        lista.insertar("dato", 6);
         System.out.println("Contenido de la lista: " + lista);
         System.out.println("Pregunta:¿Cuántos objetos están involucrados?");
         System.out.println("Respuesta: La cantidad de objetos involucrados es 2 los cuales son el nodo al primer dato y el dato");
     }
 
     private static void ejemplo_2(){
-        System.out.println("Ejemplo de Lista enlazada");
+        System.out.println("Ejemplo de Lista Enlazada Doble");
 
         ListaEnlazadaDoble lista = new ListaEnlazadaDoble();
 
@@ -157,7 +160,9 @@ public class Ejemplos_ejercicios {
         System.out.println("Recupero elemento de la posicion 1: " + lista.recuperar(1));
         System.out.println("Recupero elemento de la posicion 7: " + lista.recuperar(7));
 
-        System.out.println("inserto elementos en la posicion 1 y 6:");
+        System.out.println("inserto elementos en la posicion 1 y 4:");
+        lista.insertar("nuevo elemento", 1);
+        lista.insertar("27", 4);
         System.out.println("Contenido de la lista: " + lista);
 
         System.out.println("Pregunta: ¿La interfaz debe ser la misma?");
