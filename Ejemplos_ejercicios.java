@@ -1,6 +1,7 @@
 import ar.edu.unlu.poo.lista.ListaEnlazada;
 import ar.edu.unlu.poo.lista.ListaEnlazadaDoble;
-import ar.edu.unlu.poo.lista.Nodo;
+
+import ar.edu.unlu.poo.pila.Pila;
 
 import java.util.Scanner;
 
@@ -16,7 +17,7 @@ public class Ejemplos_ejercicios {
                 ejemplo_2();
                 break;
             case 3:
-                //ejemplo_3();
+                ejemplo_3();
                 break;
             case 4:
                 //ejemplo_4();
@@ -124,7 +125,7 @@ public class Ejemplos_ejercicios {
         lista.insertar("dato", 6);
         System.out.println("Contenido de la lista: " + lista);
         System.out.println("Pregunta:¿Cuántos objetos están involucrados?");
-        System.out.println("Respuesta: La cantidad de objetos involucrados es 2 los cuales son el nodo al primer dato y el dato");
+        System.out.println("Respuesta: La cantidad de objetos involucrados es 2 los cuales son el nodo al primer dato (aunque pueden haber mas) y la lista en si");
     }
 
     private static void ejemplo_2(){
@@ -168,4 +169,71 @@ public class Ejemplos_ejercicios {
         System.out.println("Pregunta: ¿La interfaz debe ser la misma?");
         System.out.println("La interfaz no necesariamente debe ser la misma porque se podrian agregar funciones que recorran la lista desde el ultimo elemento pero se puede usar la misma interfaz que la anterior para que funcione la lista de igual manera");
     }
+
+    private static void ejemplo_3(){
+        System.out.println("Ejemplo de Pila:");
+        System.out.println("La interfaz implementada fue la siguiente: ");
+
+        Pila pila = new Pila();
+
+        if (pila.es_vacia()){
+            System.out.println("La pila esta vacia");
+        }
+
+        System.out.println("Agrego elementos a la Pila...");
+        pila.apilar(10);
+        pila.apilar(9);
+        pila.apilar("8");
+        pila.apilar("7");
+        pila.apilar(6);
+        pila.apilar(5);
+
+        if (!pila.es_vacia()){
+            System.out.println("La Pila no esta vacia.\n ");
+            System.out.println(pila_mostrar(pila));
+        }else {
+            System.out.println("Error al apilar");
+        }
+
+        System.out.println("\nLa longitud de la pila es de " + pila.longitud());
+
+        pila.desapilar();
+        System.out.println("\nSe desapilo un elemento:");
+        System.out.println("Recupero elemento del tope: " + pila.tope());
+
+        System.out.println(" " + pila_mostrar(pila));
+
+        pila.desapilar();
+        System.out.println("\nSe desapilo otro elemento: ");
+        System.out.println("Recupero elemento del tope: " + pila.tope());
+
+        System.out.println("\n " + pila_mostrar(pila));
+
+        System.out.println("Pregunta: ¿cuantos objetos estan involucrados en la solucion? responsabilidades de cada objeto involucrado.");
+        System.out.println("Respuesta: La cantidad de objetos involucrados es 3 los cuales son el nodo al primer dato (aunque pueden haber mas), el tope y la pila.");
+        System.out.println("La responsabilidad del primer nodo es la de contener la base de la pila y conectar al resto de nodos. La resposnabilidad del tope es parecida solo que este contiene el dato del tope de la pila por el cual se realizan las operaciones principales. Mientras que la pila en si misma se responsabiliza por realizar las operaciones clave para que funcione la pila como debe");
+
+    }
+    public static String pila_mostrar(Pila pila){
+        String acumulador = "";
+        Object dato_actual;
+        Integer i = pila.longitud();
+        if (pila.es_vacia()){
+            return "<La pila esta vacia>";
+        }
+        Pila Paux = new Pila();
+        System.out.println("Contenido de la pila: ");
+        while(!pila.es_vacia()){
+            dato_actual = pila.desapilar();
+            acumulador += "\n Nodo " + i + ": " + dato_actual;
+            Paux.apilar(dato_actual);
+            i = i - 1;
+        }
+        while(!Paux.es_vacia()){
+            dato_actual = Paux.desapilar();
+            pila.apilar(dato_actual);
+        }
+        return acumulador;
+    }
+
 }
