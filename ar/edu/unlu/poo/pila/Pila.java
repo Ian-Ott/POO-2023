@@ -24,8 +24,8 @@ public class Pila {
         return tope_Aux.getDato();
     }
 
-    public Boolean es_vacia(){
-        return tope.getDato() == null;
+    public boolean es_vacia(){
+        return tope == null;
     }
 
     public int longitud(){
