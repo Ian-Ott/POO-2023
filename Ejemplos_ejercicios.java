@@ -1,3 +1,4 @@
+import ar.edu.unlu.poo.cola.Cola;
 import ar.edu.unlu.poo.lista.ListaEnlazada;
 import ar.edu.unlu.poo.lista.ListaEnlazadaDoble;
 
@@ -20,10 +21,10 @@ public class Ejemplos_ejercicios {
                 ejemplo_3();
                 break;
             case 4:
-                //ejemplo_4();
+                ejemplo_4();
                 break;
             case 5:
-                //ejemplo_5();
+                ejemplo_5();
                 break;
             case 6:
                 //ejemplo_6();
@@ -236,4 +237,110 @@ public class Ejemplos_ejercicios {
         return acumulador;
     }
 
+    private static void ejemplo_4(){
+        System.out.println("Ejemplo de Cola:");
+        System.out.println("La interfaz implementada fue la siguiente: ");
+
+        Cola cola = new Cola();
+
+        if (cola.es_vacia()){
+            System.out.println("La cola esta vacia");
+        }
+
+        System.out.println("Agrego elementos a la Cola...");
+        cola.encolar(2);
+        cola.encolar(4);
+        cola.encolar(8);
+        cola.encolar("16");
+        cola.encolar(32);
+        cola.encolar(64);
+
+
+        if (!cola.es_vacia()){
+            System.out.println("La Cola no esta vacia.\n ");
+            System.out.println(cola_mostrar(cola));
+        }else {
+            System.out.println("Error al encolar");
+        }
+
+        System.out.println("\nLa longitud de la cola es de " + cola.longitud());
+
+        cola.desencolar();
+        System.out.println("\nSe desencolo un elemento:");
+
+        System.out.println(" " + cola_mostrar(cola));
+
+        cola.desencolar();
+        System.out.println("\nSe desencolo otro elemento: ");
+
+        System.out.println("\n " + cola_mostrar(cola));
+
+        System.out.println("Pregunta: ¿cuantos objetos estan involucrados en la solucion? responsabilidades de cada objeto involucrado.");
+        System.out.println("Respuesta: La cantidad de objetos involucrados es 3 los cuales son el nodo que contiene el frente , el nodo que contiene el final y la cola.");
+        System.out.println("La responsabilidad del frente es la de contener al nodo que debe ser desencolado (primer nodo). La resposnabilidad del final es que contiene el ultimo elemento encolado para encolar elementos por este nodo. Mientras que la cola en si misma se responsabiliza por realizar las operaciones clave para que funcione la cola (encolar, desapilar, etc");
+    }
+
+    private static String cola_mostrar(Cola cola) {
+        String acumulador = "";
+        Object dato_actual;
+        Integer i = 1;
+        if (cola.es_vacia()){
+            return "<La cola esta vacia>";
+        }
+        Cola Caux = new Cola();
+        System.out.println("Contenido de la cola: ");
+        while(!cola.es_vacia()){
+            dato_actual = cola.desencolar();
+            acumulador += "\n Nodo " + i + ": " + dato_actual;
+            Caux.encolar(dato_actual);
+            i = i + 1;
+        }
+        while(!Caux.es_vacia()){
+            dato_actual = Caux.desencolar();
+            cola.encolar(dato_actual);
+        }
+        return acumulador;
+    }
+
+    private static void ejemplo_5(){
+        System.out.println("Ejemplo de Lista enlazada");
+
+        ListaEnlazada lista = new ListaEnlazada();
+
+        if (lista.es_vacia()){
+            System.out.println("La lista esta vacia");
+        }
+
+        System.out.println("Agrego elementos a la lista...");
+        lista.agregar(123);
+        lista.agregar(4);
+        lista.agregar("hola");
+        lista.agregar("mundo");
+        lista.agregar(5);
+        lista.agregar(2);
+
+        if (!lista.es_vacia()){
+            System.out.println("La lista no esta vacia.\nContenido de la lista: " + lista);
+        }else {
+            System.out.println("Error al agregar");
+        }
+
+        System.out.println("\nLa longitud de la lista es de " + lista.longitud());
+
+        lista.eliminar(3);
+        lista.eliminar(6);
+        System.out.println("\nEliminados los elementos de la posicion 3 y 6");
+        System.out.println("Contenido de la lista: " + lista);
+        System.out.println("como la posicion 6 no existe en la lista no se elimina ningun elemento.");
+
+        System.out.println("Recupero elemento de la posicion 2: " + lista.recuperar(2));
+        System.out.println("Recupero elemento de la posicion 5: " + lista.recuperar(5));
+
+        System.out.println("inserto elementos en la posicion 1 y 6:");
+        lista.insertar(25, 1);
+        lista.insertar("dato", 6);
+        System.out.println("Contenido de la lista: " + lista);
+        System.out.println("Pregunta:¿Cuántos objetos están involucrados?");
+        System.out.println("Respuesta: La cantidad de objetos involucrados es 2 los cuales son el nodo al primer dato (aunque pueden haber mas) y la lista en si");
+    }
 }

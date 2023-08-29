@@ -1,8 +1,9 @@
 package ar.edu.unlu.poo.listadetareas;
 
-import ar.edu.unlu.poo.pila.Nodo;
+import ar.edu.unlu.poo.lista.Nodo;
 
 import java.time.LocalDate;
+
 
 public class ListaDeTareas {
     NodoTarea prioridad = null;
@@ -12,7 +13,7 @@ public class ListaDeTareas {
     public boolean es_vacia(){
         return prioridad == null;
     }
-    public void agregar_tarea(String descripcion, LocalDate fecha, String estado){
+    public void agregar_tarea(String descripcion, LocalDate fecha, EstadoTarea estado){
         NodoTarea nuevo_nodo = new NodoTarea();
         nuevo_nodo.setDescripcion(descripcion);
         nuevo_nodo.setFechaLimite(fecha);
@@ -42,7 +43,7 @@ public class ListaDeTareas {
         }
     }
 
-    public void cambiar_estado(String estado, int pos){
+    /*public void cambiar_estado(String estado, int pos){
         NodoTarea nodoAux = prioridad;
         int i = 1;
         if (pos == 1){
@@ -54,7 +55,7 @@ public class ListaDeTareas {
             }
             nodoAux.setEstado(estado);
         }
-    }
+    } capaz sirve para el punto 12*/
 
     public void cambiar_prioridad(int pos_prioridad, int pos){
         NodoTarea nodoAux = prioridad;
@@ -87,13 +88,13 @@ public class ListaDeTareas {
         NodoTarea nodoAux = prioridad;
         int i = 1;
         if (pos == 1){
-            return nodoAux.getEstado().equals("vencida");
+            return nodoAux.getEstado().equals(EstadoTarea.VENCIDA);
         } else{
             while(pos != i){
                 nodoAux = nodoAux.getSiguiente();
                 i++;
             }
-            return nodoAux.getEstado().equals("vencida");
+            return nodoAux.getEstado().equals(EstadoTarea.VENCIDA);
         }
     }
 
@@ -101,17 +102,17 @@ public class ListaDeTareas {
         NodoTarea nodoAux = prioridad;
         int i = 1;
         if(pos == 1){
-            return nodoAux.getEstado().equals("completa");
+            return nodoAux.getEstado().equals(EstadoTarea.COMPLETA);
         } else{
             while(pos != i){
                 nodoAux = nodoAux.getSiguiente();
                 i++;
             }
-            return nodoAux.getEstado().equals("completa");
+            return nodoAux.getEstado().equals(EstadoTarea.COMPLETA);
         }
     }
 
-    public String estado(int pos){
+    public EstadoTarea estado(int pos){
         NodoTarea nodoAux = prioridad;
         int i = 1;
         if(pos == 1){
@@ -125,7 +126,24 @@ public class ListaDeTareas {
         }
     }
 
-    public void mostrar(){
-        //pensar si agregarlo aca o en otro lado
+    public String toString() {
+        String acumulador = "";
+        Integer i = 1;
+        NodoTarea nodoAux = prioridad;
+        if (prioridad == null) {
+            acumulador = "No hay tareas";
+        } else {
+            System.out.println("Contenido de la lista de tareas (en orden de prioridad):");
+            while (nodoAux != null) {
+                if (nodoAux.getEstado().equals(EstadoTarea.VENCIDA)){
+                    acumulador += "\n " + i + "- (vencida)" + nodoAux.getDescripcion();
+                }else {
+                acumulador += "\n " + i + "-" + nodoAux.getDescripcion();
+                }
+                i++;
+                nodoAux = nodoAux.getSiguiente();
+            }
+        }
+        return acumulador;
     }
 }

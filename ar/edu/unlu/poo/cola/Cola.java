@@ -8,15 +8,14 @@ public class Cola {
         return frente == null;
     }
     public void encolar(Object dato){
-        Nodo nodoAux = new Nodo();
-        nodoAux = frente;
-        nodoAux.setDato(dato);
+        Nodo nuevo_nodo = new Nodo();
+        nuevo_nodo.setDato(dato);
         if (es_vacia()){
-            frente = nodoAux;
+            frente = nuevo_nodo;
         }else {
-            finalCola.setSiguiente(nodoAux);
+            finalCola.setSiguiente(nuevo_nodo);
         }
-        finalCola = nodoAux;
+        finalCola = nuevo_nodo;
     }
 
     public Object desencolar(){
