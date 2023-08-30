@@ -1,14 +1,12 @@
 package ar.edu.unlu.poo.listadetareas;
 import java.time.LocalDate;
 
-enum EstadoTarea{
-    COMPLETA, INCOMPLETA, VENCIDA;
-}
+
 public class NodoTarea {
-    String descripcion;
-    EstadoTarea estado;
-    LocalDate fechaLimite = null;
-    NodoTarea siguiente = null;
+    private String descripcion;
+    private EstadoTarea estado;
+    private LocalDate fechaLimite = null;
+    private NodoTarea siguiente = null;
     public void setDescripcion(String descripcion){this.descripcion = descripcion;}
 
     public String getDescripcion(){return descripcion;}

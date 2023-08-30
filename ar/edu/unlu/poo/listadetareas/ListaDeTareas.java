@@ -4,7 +4,6 @@ import ar.edu.unlu.poo.lista.Nodo;
 
 import java.time.LocalDate;
 
-
 public class ListaDeTareas {
     NodoTarea prioridad = null;
     //la tarea con mas prioridad es el primer elemento de la lista
@@ -17,6 +16,9 @@ public class ListaDeTareas {
         NodoTarea nuevo_nodo = new NodoTarea();
         nuevo_nodo.setDescripcion(descripcion);
         nuevo_nodo.setFechaLimite(fecha);
+        if (estado == EstadoTarea.INCOMPLETA && fecha.isBefore(LocalDate.now())){
+            estado = EstadoTarea.VENCIDA;
+        }
         nuevo_nodo.setEstado(estado);
         if (prioridad == null){
             prioridad = nuevo_nodo;
@@ -62,7 +64,7 @@ public class ListaDeTareas {
         NodoTarea nueva_prioridad = prioridad;
         if(pos == 1){
             prioridad = nueva_prioridad.getSiguiente();
-            for (int i = 0; i < pos_prioridad - 2;i++){
+            for (int i = 0; i < pos_prioridad - 1;i++){
                 nodoAux = nodoAux.getSiguiente();
             }
             nueva_prioridad.setSiguiente(nodoAux.getSiguiente());
@@ -76,11 +78,16 @@ public class ListaDeTareas {
             nodoAux.setSiguiente(nueva_prioridad.getSiguiente());
             //ahora busco la nueva posicion de la tarea que se le queria cambiar la posicion
             nodoAux = prioridad;
+            if(pos_prioridad == 1){
+                nueva_prioridad.setSiguiente(nodoAux);
+                prioridad = nueva_prioridad;
+            }else{
             for (int i = 0; i < pos_prioridad - 2;i++){
                 nodoAux = nodoAux.getSiguiente();
             }
             nueva_prioridad.setSiguiente(nodoAux.getSiguiente());
             nodoAux.setSiguiente(nueva_prioridad);
+            }
         }
     }
 
@@ -112,7 +119,7 @@ public class ListaDeTareas {
         }
     }
 
-    public EstadoTarea estado(int pos){
+    /*public EstadoTarea estado(int pos){
         NodoTarea nodoAux = prioridad;
         int i = 1;
         if(pos == 1){
@@ -124,7 +131,7 @@ public class ListaDeTareas {
             }
             return nodoAux.getEstado();
         }
-    }
+    }*/
 
     public String toString() {
         String acumulador = "";
@@ -133,11 +140,12 @@ public class ListaDeTareas {
         if (prioridad == null) {
             acumulador = "No hay tareas";
         } else {
-            System.out.println("Contenido de la lista de tareas (en orden de prioridad):");
             while (nodoAux != null) {
                 if (nodoAux.getEstado().equals(EstadoTarea.VENCIDA)){
                     acumulador += "\n " + i + "- (vencida)" + nodoAux.getDescripcion();
-                }else {
+                } else if ( nodoAux.getEstado().equals(EstadoTarea.COMPLETA)) {
+                    acumulador += "\n " + i + "- (completa)" + nodoAux.getDescripcion();
+                } else {
                 acumulador += "\n " + i + "-" + nodoAux.getDescripcion();
                 }
                 i++;

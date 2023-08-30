@@ -2,8 +2,11 @@ import ar.edu.unlu.poo.cola.Cola;
 import ar.edu.unlu.poo.lista.ListaEnlazada;
 import ar.edu.unlu.poo.lista.ListaEnlazadaDoble;
 
+import ar.edu.unlu.poo.listadetareas.EstadoTarea;
+import ar.edu.unlu.poo.listadetareas.ListaDeTareas;
 import ar.edu.unlu.poo.pila.Pila;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Ejemplos_ejercicios {
@@ -302,45 +305,58 @@ public class Ejemplos_ejercicios {
         return acumulador;
     }
 
-    private static void ejemplo_5(){
-        System.out.println("Ejemplo de Lista enlazada");
+    private static void ejemplo_5() {
+        System.out.println("Ejemplo de Lista de tareas:");
 
-        ListaEnlazada lista = new ListaEnlazada();
+        ListaDeTareas listaT = new ListaDeTareas();
 
-        if (lista.es_vacia()){
-            System.out.println("La lista esta vacia");
+        if (listaT.es_vacia()) {
+            System.out.println("\nLa lista de tareas esta vacia");
         }
 
-        System.out.println("Agrego elementos a la lista...");
-        lista.agregar(123);
-        lista.agregar(4);
-        lista.agregar("hola");
-        lista.agregar("mundo");
-        lista.agregar(5);
-        lista.agregar(2);
+        System.out.println("\nAgrego tareas a la lista...");
+        listaT.agregar_tarea("completar el ejercicio 5", LocalDate.of(2023, 8, 30), EstadoTarea.INCOMPLETA);
+        listaT.agregar_tarea("Ir al supermercado mañana", LocalDate.of(2023, 9, 7), EstadoTarea.INCOMPLETA);
+        listaT.agregar_tarea("Consultar repuesto del auto", LocalDate.of(2023, 9, 5), EstadoTarea.COMPLETA);
+        listaT.agregar_tarea("Ir al cine a ver la nueva pelicula de marvel", LocalDate.of(2023, 9, 5), EstadoTarea.INCOMPLETA);
 
-        if (!lista.es_vacia()){
-            System.out.println("La lista no esta vacia.\nContenido de la lista: " + lista);
-        }else {
+
+        if (!listaT.es_vacia()) {
+            System.out.println("La lista de tareas no esta vacia.\nContenido de la lista de tareas(en orden de prioridad): " + listaT);
+        } else {
             System.out.println("Error al agregar");
         }
 
-        System.out.println("\nLa longitud de la lista es de " + lista.longitud());
+        System.out.println("\nCompruebo cuales tareas estan completas: ");
+        for (int i = 1; i <= 4; i++) {
+            System.out.print("\n" + i + "-");
+            if (listaT.esta_completa(i)) {
+                System.out.print("Esta completa");
+            } else {
+                System.out.print("Esta incompleta");
+            }
+        }
 
-        lista.eliminar(3);
-        lista.eliminar(6);
-        System.out.println("\nEliminados los elementos de la posicion 3 y 6");
-        System.out.println("Contenido de la lista: " + lista);
-        System.out.println("como la posicion 6 no existe en la lista no se elimina ningun elemento.");
+        System.out.print("\nCompruebo cuales tareas estan vencidas: ");
+        for (int i = 1; i <= 4; i++) {
+            System.out.print("\n" + i + "-");
+            if (listaT.esta_vencida(i)) {
+                System.out.print("Esta vencida");
+            } else {
+                System.out.print("No esta vencida");
+            }
+        }
 
-        System.out.println("Recupero elemento de la posicion 2: " + lista.recuperar(2));
-        System.out.println("Recupero elemento de la posicion 5: " + lista.recuperar(5));
+        System.out.println("\nLe cambio la descripcion a la primera tarea: ");
+        listaT.cambiar_descripcion("Entregar el TP1 de POO", 1);
+        System.out.println("contenido de la lista de tareas (en orden de prioridad): " + listaT);
 
-        System.out.println("inserto elementos en la posicion 1 y 6:");
-        lista.insertar(25, 1);
-        lista.insertar("dato", 6);
-        System.out.println("Contenido de la lista: " + lista);
-        System.out.println("Pregunta:¿Cuántos objetos están involucrados?");
-        System.out.println("Respuesta: La cantidad de objetos involucrados es 2 los cuales son el nodo al primer dato (aunque pueden haber mas) y la lista en si");
+        System.out.println("\nLe cambio la prioridad a la ultima tarea: ");
+        listaT.cambiar_prioridad(1, 4);
+        System.out.println("contenido de la lista de tareas: " + listaT);
+        System.out.println("\n ahora vuelvo las tareas a su prioridad original: ");
+        listaT.cambiar_prioridad(4, 1);
+        System.out.println("contenido de la lista de tareas: " + listaT);
+
     }
 }
