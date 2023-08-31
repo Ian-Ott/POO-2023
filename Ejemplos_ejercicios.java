@@ -1,4 +1,5 @@
 import ar.edu.unlu.poo.cola.Cola;
+import ar.edu.unlu.poo.ecuacion.EcuacionSegundoGrado;
 import ar.edu.unlu.poo.libro.Biblioteca;
 import ar.edu.unlu.poo.lista.ListaEnlazada;
 import ar.edu.unlu.poo.lista.ListaEnlazadaDoble;
@@ -8,6 +9,7 @@ import ar.edu.unlu.poo.listadetareas.ListaDeTareas;
 import ar.edu.unlu.poo.pila.Pila;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ejemplos_ejercicios {
@@ -34,7 +36,7 @@ public class Ejemplos_ejercicios {
                 ejemplo_6();
                 break;
             case 7:
-                //ejemplo_7();
+                ejemplo_7();
                 break;
             case 8:
                 //ejemplo_8();
@@ -393,6 +395,56 @@ public class Ejemplos_ejercicios {
         System.out.println("\nMuestro como quedo la descripcion de La odisea: ");
         biblioteca.mostrar_descripcion("La odisea", "Homero");
 
+    }
 
+    public static void ejemplo_7(){
+        System.out.println("Ejemplos de Ecuaciones: ");
+        System.out.println("\nCreo y agrego los valores de la ecuacion... ");
+        EcuacionSegundoGrado ecuacion = new EcuacionSegundoGrado();
+        int a = 2;
+        int b = 4;
+        int c = 2;
+        ecuacion.Establecer_valores(a,b,c);
+        System.out.println("Los valores agregados fueron: a =" + a + " ,b =" + b + " ,c =" + c);
+
+        System.out.println("\n calculo las raices...");
+        ArrayList <Integer> raices = ecuacion.calcular_raiz();
+        int j = 0;
+        for (int i = 0; i < raices.size(); i++){
+            j++;
+            System.out.println("X" + j + "=" + raices.get(i));
+        }
+
+        System.out.println("\n calculo la y...");
+        ArrayList<Integer> y = ecuacion.calcular_y(raices);
+        j = 0;
+        for (int i = 0; i < y.size(); i++){
+            j++;
+            System.out.println("y" + j + "=" + y.get(i));
+        }
+
+        System.out.println("\n Pruebo con otros valores...");
+        EcuacionSegundoGrado ecuacion2 = new EcuacionSegundoGrado();
+        a = 1;
+        b = 2;
+        c = -3;
+        ecuacion2.Establecer_valores(a,b,c);
+        System.out.println("Los valores agregados fueron: a =" + a + " ,b =" + b + " ,c =" + c);
+
+        System.out.println("\n calculo las raices...");
+        ArrayList <Integer> raices2 = ecuacion2.calcular_raiz();
+        j = 0;
+        for (int i = 0; i < raices2.size(); i++){
+            j++;
+            System.out.println("X" + j + "=" + raices2.get(i));
+        }
+
+        System.out.println("\n calculo la y...");
+        ArrayList<Integer> y2 = ecuacion2.calcular_y(raices2);
+        j = 0;
+        for (int i = 0; i < y2.size(); i++){
+            j++;
+            System.out.println("y" + j + "=" + y2.get(i));
+        }
     }
 }
