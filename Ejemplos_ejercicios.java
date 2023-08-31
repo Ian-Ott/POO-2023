@@ -1,4 +1,5 @@
 import ar.edu.unlu.poo.cola.Cola;
+import ar.edu.unlu.poo.libro.Biblioteca;
 import ar.edu.unlu.poo.lista.ListaEnlazada;
 import ar.edu.unlu.poo.lista.ListaEnlazadaDoble;
 
@@ -30,7 +31,7 @@ public class Ejemplos_ejercicios {
                 ejemplo_5();
                 break;
             case 6:
-                //ejemplo_6();
+                ejemplo_6();
                 break;
             case 7:
                 //ejemplo_7();
@@ -357,6 +358,41 @@ public class Ejemplos_ejercicios {
         System.out.println("\n ahora vuelvo las tareas a su prioridad original: ");
         listaT.cambiar_prioridad(4, 1);
         System.out.println("contenido de la lista de tareas: " + listaT);
+
+    }
+
+    private static void ejemplo_6(){
+        System.out.println("\nEjemplo de Biblioteca: ");
+        Biblioteca biblioteca = new Biblioteca();
+
+        System.out.println("\nagrego libros a la biblioteca... ");
+        biblioteca.agregar_libro("La odisea", "Homero", 448, 10);
+        biblioteca.agregar_libro("Frankenstein", "Mary Shelley", 304, 1);
+
+        System.out.println("\nContenido de la biblioteca: " + biblioteca);
+
+        System.out.println("\nPido prestado dos libros de la odisea: ");
+        biblioteca.prestar_libro("La odisea", "Homero");
+        biblioteca.prestar_libro("La odisea", "Homero");
+
+        System.out.println("\nPido prestado un libro de frankestein: ");
+        biblioteca.prestar_libro("Frankenstein", "Mary Shelley");
+
+        System.out.println("\nCompruebo los prestamos realizados con el libro la odisea: " + biblioteca.prestamosRealizados("La odisea", "Homero"));
+
+        System.out.println("\nComparo la cantidad de paginas del libro la odisea con el de frankestein: ");
+        if (biblioteca.libro1_tieneMasPags("La odisea" , "Homero", "Frankenstein", "Mary Shelley")){
+            System.out.println("La odisea tiene mas cantidad de paginas que Frankenstein");
+        }else {
+            System.out.println("Frankenstein tiene mas cantidad de paginas que frankenstein");
+        }
+        System.out.println("\nPido prestado un libro mas de la odisea y compruebo la cantidad total de prestamos que realizo la biblioteca: ");
+        biblioteca.prestar_libro("La odisea", "Homero");
+        System.out.println("\nLa cantidad de prestamos totales que realizo la biblioteca fue de " + biblioteca.total_prestamos());
+
+        System.out.println("\nMuestro como quedo la descripcion de La odisea: ");
+        biblioteca.mostrar_descripcion("La odisea", "Homero");
+
 
     }
 }
