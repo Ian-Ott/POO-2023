@@ -422,8 +422,10 @@ public class Ejemplos_ejercicios {
             j++;
             System.out.println("y" + j + "=" + y.get(i));
         }
+        System.out.println("\nCambio los valores de los coeficientes...");
+        ecuacion.Establecer_valores(3,6,9);
 
-        System.out.println("\n Pruebo con otros valores...");
+        System.out.println("\n Pruebo con otros valores (creando una nueva ecuacion)...");
         EcuacionSegundoGrado ecuacion2 = new EcuacionSegundoGrado();
         a = 1;
         b = 2;
