@@ -6,6 +6,7 @@ import ar.edu.unlu.poo.lista.ListaEnlazadaDoble;
 
 import ar.edu.unlu.poo.listadetareas.EstadoTarea;
 import ar.edu.unlu.poo.listadetareas.ListaDeTareas;
+import ar.edu.unlu.poo.password.Contrasenia;
 import ar.edu.unlu.poo.pila.Pila;
 
 import java.time.LocalDate;
@@ -39,7 +40,7 @@ public class Ejemplos_ejercicios {
                 ejemplo_7();
                 break;
             case 8:
-                //ejemplo_8();
+                ejemplo_8();
                 break;
             case 9:
                 //ejemplo_9();
@@ -448,5 +449,24 @@ public class Ejemplos_ejercicios {
             j++;
             System.out.println("y" + j + "=" + y2.get(i));
         }
+    }
+
+    public static void ejemplo_8(){
+        System.out.println("Ejemplos del generador de contrasenias: ");
+        System.out.println("\nGenero contrasenias por su longitud por defecto...");
+        Contrasenia conjunto1 = new Contrasenia();
+        conjunto1.generar_contrasenias();
+        System.out.println("\nContrasenias generadas: " + conjunto1);
+
+        System.out.println("\nGenero otro conjunto de contrasenias y solicito longitud al usuario: ");
+        Contrasenia conjunto2 = new Contrasenia();
+        conjunto1.cambiar_longitud();
+        System.out.println("\nContrasenias generadas: " + conjunto2);
+
+        System.out.println("\nRegenero las contrasenias debiles del nuevo conjunto...");
+        conjunto2.regenerarContraseniaDebil();
+        System.out.println("\nContrasenias generadas: " + conjunto2);
+
+
     }
 }
