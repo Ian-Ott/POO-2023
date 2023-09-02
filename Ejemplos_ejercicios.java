@@ -7,6 +7,7 @@ import ar.edu.unlu.poo.lista.ListaEnlazadaDoble;
 
 import ar.edu.unlu.poo.listadetareas.EstadoTarea;
 import ar.edu.unlu.poo.listadetareas.ListaDeTareas;
+import ar.edu.unlu.poo.listadetareas.ListaDeTareasConRecordatorio;
 import ar.edu.unlu.poo.password.Contrasenia;
 import ar.edu.unlu.poo.pila.Pila;
 
@@ -47,7 +48,7 @@ public class Ejemplos_ejercicios {
                 ejemplo_9();
                 break;
             case 10:
-                //ejemplo_10();
+                ejemplo_10();
                 break;
             case 11:
                 //ejemplo_11();
@@ -507,5 +508,61 @@ public class Ejemplos_ejercicios {
         } else {
             System.out.println("\n La  " + fecha_determinada + " no esta entre esas dos fechas");
         }
+    }
+
+    private static void ejemplo_10() {
+        System.out.println("Ejemplo de Lista de tareas con recordatorios:");
+
+        ListaDeTareasConRecordatorio listaT_Mod = new ListaDeTareasConRecordatorio();
+
+        if (listaT_Mod.es_vacia()) {
+            System.out.println("\nLa lista de tareas esta vacia");
+        }
+
+        System.out.println("\nAgrego tareas a la lista...");
+        listaT_Mod.agregar_tarea("completar el ejercicio 5", LocalDate.of(2023, 8, 30), EstadoTarea.INCOMPLETA, LocalDate.of(2023, 8, 28));
+        listaT_Mod.agregar_tarea("Ir al supermercado mañana", LocalDate.of(2023, 9, 7), EstadoTarea.INCOMPLETA, LocalDate.of(2023, 9,6));
+        listaT_Mod.agregar_tarea("Consultar repuesto del auto", LocalDate.of(2023, 9, 5), EstadoTarea.COMPLETA, LocalDate.of(2023, 9, 3));
+        listaT_Mod.agregar_tarea("Ir al cine a ver la nueva pelicula de marvel", LocalDate.of(2023, 9, 5), EstadoTarea.INCOMPLETA, LocalDate.of(2023, 9, 4));
+        listaT_Mod.agregar_tarea("Estudiar para el parcial de POO", LocalDate.of(2023, 11, 1), EstadoTarea.INCOMPLETA, LocalDate.of(2023, 10, 18));
+
+
+        if (!listaT_Mod.es_vacia()) {
+            System.out.println("La lista de tareas no esta vacia.\nContenido de la lista de tareas(en orden de prioridad): " + listaT_Mod);
+        } else {
+            System.out.println("Error al agregar");
+        }
+
+        System.out.println("\nCompruebo cuales tareas estan completas: ");
+        for (int i = 1; i <= 4; i++) {
+            System.out.print("\n" + i + "-");
+            if (listaT_Mod.esta_completa(i)) {
+                System.out.print("Esta completa");
+            } else {
+                System.out.print("Esta incompleta");
+            }
+        }
+
+        System.out.print("\nCompruebo cuales tareas estan vencidas: ");
+        for (int i = 1; i <= 4; i++) {
+            System.out.print("\n" + i + "-");
+            if (listaT_Mod.esta_vencida(i)) {
+                System.out.print("Esta vencida");
+            } else {
+                System.out.print("No esta vencida");
+            }
+        }
+
+        System.out.println("\nLe cambio la descripcion a la primera tarea: ");
+        listaT_Mod.cambiar_descripcion("Entregar el TP de POO", 1);
+        System.out.println("contenido de la lista de tareas (en orden de prioridad): " + listaT_Mod);
+
+        System.out.println("\nLe cambio la prioridad a la ultima tarea: ");
+        listaT_Mod.cambiar_prioridad(1, 4);
+        System.out.println("contenido de la lista de tareas: " + listaT_Mod);
+        System.out.println("\n ahora vuelvo las tareas a su prioridad original: ");
+        listaT_Mod.cambiar_prioridad(4, 1);
+        System.out.println("contenido de la lista de tareas: " + listaT_Mod);
+
     }
 }
