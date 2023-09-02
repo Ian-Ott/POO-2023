@@ -77,7 +77,6 @@ public class Contrasenia {
                 contraseniasAUX.set(i, regenerar());
             }
         }
-        System.out.println("\nContrasenias debiles regeneradas (si ninguna era debil quedan exactamente igual)");
     }
 
     private String regenerar(){
@@ -92,6 +91,10 @@ public class Contrasenia {
                 } else {
                     nueva_Contrasenia += numeros[(int) (random() * numeros.length)];
             }
+        }
+        //la regenera hasta que la contrasenia sea fuerte
+        if (!es_fuerte(nueva_Contrasenia)){
+            nueva_Contrasenia = regenerar();
         }
         return nueva_Contrasenia;
     }

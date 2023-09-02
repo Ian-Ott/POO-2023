@@ -455,14 +455,14 @@ public class Ejemplos_ejercicios {
         System.out.println("Ejemplos del generador de contrasenias (esta limitado a generar 10 contrasenias pero se le puede cambiar el limite): ");
         System.out.println("\nGenero contrasenias por su longitud por defecto...");
         Contrasenia conjunto1 = new Contrasenia();
-        ArrayList<String> contrasenias = new ArrayList<>();
+        ArrayList<String> contrasenias;
         contrasenias = conjunto1.generar_contrasenias();
         System.out.println("\nContrasenias generadas: ");
         conjunto1.mostrar_contrasenias(contrasenias);
 
         System.out.println("\nGenero otro conjunto de contrasenias y solicito longitud al usuario: ");
         Contrasenia conjunto2 = new Contrasenia();
-        ArrayList <String> contrasenias2 = new ArrayList<>();
+        ArrayList <String> contrasenias2;
         conjunto2.cambiar_longitud();
         contrasenias2 = conjunto2.generar_contrasenias();
         System.out.println("\nContrasenias generadas: ");
@@ -471,7 +471,7 @@ public class Ejemplos_ejercicios {
 
         System.out.println("\nRegenero las contrasenias debiles del nuevo conjunto...");
         conjunto2.regenerarContraseniaDebil(contrasenias2);
-        System.out.println("\nContrasenias generadas: ");
+        System.out.println("\nContrasenias regeneradas: ");
         conjunto2.mostrar_contrasenias(contrasenias2);
 
 
