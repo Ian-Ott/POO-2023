@@ -3,13 +3,12 @@ package ar.edu.unlu.poo.password;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static ar.edu.unlu.poo.password.caracteres.*;
 import static java.lang.Math.*;
 
 public class Contrasenia {
     Contenido contenido = new Contenido();
-    ArrayList<String> numeros = new ArrayList<>(List.of("1", "2", "3", "4", "5", "6", "7", "8", "9"));
-    ArrayList<String> minusculas = new ArrayList<>(List.of("a","b", "c", "d", "e", "f" , "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u","v", "w", "x", "y", "z"));
-    ArrayList <String> mayusculas = new ArrayList<>(List.of("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"));
 
 
     public void cambiar_longitud(){
@@ -19,7 +18,7 @@ public class Contrasenia {
         while(longitud < 8 || longitud > 32){
             System.out.println("Seleccione una longitud:");
             longitud = sc.nextInt();
-            if (longitud <= 0 || longitud > 13){
+            if (longitud <= 7 || longitud > 32){
                 System.out.println("OPCION INCORRECTA: Seleccione una longitud entre 8-32");
             }
         }
@@ -31,18 +30,18 @@ public class Contrasenia {
         int cantidad_minus = 0;
         int cantidad_numeros = 0;
         boolean resultado = false;
-        for (int i = 0; i < mayusculas.size(); i++) {
-            if (contrasenia.contains(mayusculas.get(i))){
+        for (int i = 0; i < mayusculas.length; i++) {
+            if (contrasenia.contains(mayusculas[i])){
                 cantidad_mayus++;
             }
         }
-        for (int i = 0; i < minusculas.size(); i++) {
-            if (contrasenia.contains(minusculas.get(i))){
+        for (int i = 0; i < minusculas.length; i++) {
+            if (contrasenia.contains(minusculas[i])){
                 cantidad_minus++;
             }
         }
-        for (int i = 0; i < numeros.size(); i++) {
-            if (contrasenia.contains(numeros.get(i))){
+        for (int i = 0; i < numeros.length; i++) {
+            if (contrasenia.contains(numeros[i])){
                 cantidad_numeros++;
             }
         }
@@ -52,65 +51,63 @@ public class Contrasenia {
         return resultado;
     }
 
-    public void generar_contrasenias(){
+    public ArrayList<String> generar_contrasenias(){
         int eleccion;
         String acumulador = "";
-        ArrayList<String> contraseniasAux = contenido.getContrasenias();
-        for (int i = 0; i < 5; i++){
+        ArrayList<String> contraseniasAux = new ArrayList<>();
+        for (int i = 0; i < 10; i++){
             for (int j = 0; j < contenido.getLongitud(); j++){
                 eleccion = (int) (Math.random() * 3 + 1);
                 if (eleccion == 1){
-                    acumulador += mayusculas.get((int) (random() * 25));
+                    acumulador += mayusculas[(int) (random() * mayusculas.length)];
                 } else if(eleccion == 2){
-                    acumulador += minusculas.get((int) (random() * 25));
+                    acumulador += minusculas[(int) (random() * minusculas.length)];
                 } else {
-                    acumulador += numeros.get((int) (random() * 9));
+                    acumulador += numeros[(int) (random() * numeros.length)];
                 }
             }
                 contraseniasAux.add(acumulador);
                 acumulador = "";
         }
+        return contraseniasAux;
     }
-    public  void regenerarContraseniaDebil(){
-        ArrayList<String> contraseniasAUX = contenido.getContrasenias();
+    public  void regenerarContraseniaDebil(ArrayList<String> contraseniasAUX){
         for (int i = 0; i < contraseniasAUX.size(); i++){
             if(!es_fuerte(contraseniasAUX.get(i))){
                 contraseniasAUX.set(i, regenerar());
             }
         }
-        System.out.println("\nContrasenias debiles regeneradas");
+        System.out.println("\nContrasenias debiles regeneradas (si ninguna era debil quedan exactamente igual)");
     }
 
     private String regenerar(){
-        double eleccion = (random() * 3 + 1);
+        double eleccion;
         String nueva_Contrasenia = "";
         for (int i = 0; i < contenido.getLongitud(); i++){
+            eleccion = (int) (Math.random() * 3 + 1);
                 if (eleccion == 1){
-                    nueva_Contrasenia += mayusculas.get((int) (random() * 25));
+                    nueva_Contrasenia += mayusculas[(int) (random() * mayusculas.length)];
                 } else if(eleccion == 2){
-                    nueva_Contrasenia += minusculas.get((int) (random() * 25));
+                    nueva_Contrasenia += minusculas[(int) (random() * minusculas.length)];
                 } else {
-                    nueva_Contrasenia += numeros.get((int) (random() * 9));
+                    nueva_Contrasenia += numeros[(int) (random() * numeros.length)];
             }
         }
         return nueva_Contrasenia;
     }
-    public String toString() {
-        String acumulador = "";
+    public void mostrar_contrasenias(ArrayList<String> contraseniasAux) {
         Integer i = 1;
-        ArrayList<String> contraseniasAux = contenido.getContrasenias();
-        if (contenido == null) {
-            acumulador = "\nNo hay contrasenias";
+        if (contraseniasAux.isEmpty()) {
+            System.out.println("\nNo hay contrasenias");
         } else {
-            for (int j = 0; j < contraseniasAux.size(); i++){
+            for (int j = 0; j < contraseniasAux.size(); j++){
                 if (es_fuerte(contraseniasAux.get(j))){
-                acumulador += "\n" + i + "- " + contraseniasAux.get(j) + " - Fuerte";
+                    System.out.println("\n" + i + "- " + contraseniasAux.get(j) + " - Fuerte");
                 }else {
-                    acumulador += "\n" + i + "- " + contraseniasAux.get(j) + "- Debil";
+                    System.out.println("\n" + i + "- " + contraseniasAux.get(j) + "- Debil");
                 }
                 i++;
             }
         }
-        return acumulador;
     }
 }
