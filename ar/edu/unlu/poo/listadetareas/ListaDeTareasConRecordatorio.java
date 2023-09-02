@@ -31,7 +31,9 @@ public class ListaDeTareasConRecordatorio {
             nodoAUX.setSiguiente(nuevo_nodo);
         }
         if (nuevo_nodo.getRecordatorio().isAfter(LocalDate.now()) || nuevo_nodo.getRecordatorio().isEqual(LocalDate.now())){
+            if (nuevo_nodo.getEstado() == EstadoTarea.INCOMPLETA){
             cambiar_prioridad(1, longitud());
+            }
         }
     }
 
