@@ -533,6 +533,7 @@ public class Ejemplos_ejercicios {
             System.out.println("Error al agregar");
         }
 
+        System.out.println("\nCompruebo que el resto de funciones siguen andando con las nuevas modificaciones...");
         System.out.println("\nCompruebo cuales tareas estan completas: ");
         for (int i = 1; i <= 4; i++) {
             System.out.print("\n" + i + "-");
