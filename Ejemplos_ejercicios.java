@@ -1,6 +1,7 @@
 import ar.edu.unlu.poo.cola.Cola;
 import ar.edu.unlu.poo.ecuacion.EcuacionSegundoGrado;
 import ar.edu.unlu.poo.fecha.OperacionesF;
+import ar.edu.unlu.poo.juegoPalabras.Juego;
 import ar.edu.unlu.poo.libro.Biblioteca;
 import ar.edu.unlu.poo.lista.ListaEnlazada;
 import ar.edu.unlu.poo.lista.ListaEnlazadaDoble;
@@ -51,7 +52,7 @@ public class Ejemplos_ejercicios {
                 ejemplo_10();
                 break;
             case 11:
-                //ejemplo_11();
+                ejemplo_11();
                 break;
             case 12:
                 //ejemplo_12();
@@ -565,5 +566,38 @@ public class Ejemplos_ejercicios {
         listaT_Mod.cambiar_prioridad(4, 1);
         System.out.println("contenido de la lista de tareas: " + listaT_Mod);
 
+    }
+
+    public static void ejemplo_11(){
+        System.out.println("Ejemplos del juego de palabras: ");
+        System.out.println("En este ejemplo cada jugador va a agregar 5 palabras y segun los puntos que consiga cada uno se va a determinar al ganador. ");
+
+        System.out.println("\nCreo los dos jugadores...");
+        Juego nuevo_juego = new Juego();
+
+        System.out.println("\nEl jugador 1 empezara agregando sus 5 palabras...");
+        nuevo_juego.agregar_palabras("zanahoria", 1);
+        nuevo_juego.agregar_palabras("hamarillo", 1);
+        nuevo_juego.agregar_palabras("queso", 1);
+        nuevo_juego.agregar_palabras("hielo", 1);
+        nuevo_juego.agregar_palabras("zapatillas", 1);
+
+        System.out.println("\nAhora el jugador 2 agregara sus 5 palabras...");
+        nuevo_juego.agregar_palabras("ornitorrinco", 2);
+        nuevo_juego.agregar_palabras("zapatos", 2);
+        nuevo_juego.agregar_palabras("kiwi", 2);
+        nuevo_juego.agregar_palabras("ielo", 2);
+        nuevo_juego.agregar_palabras("perro", 2);
+
+        System.out.println("Compruebo los puntajes totales de cada jugador...");
+        System.out.println("\nJugador 1: "+ nuevo_juego.puntaje(1)+ " puntos -- Jugador 2: " + nuevo_juego.puntaje(2) + " puntos...");
+
+        System.out.println("\n Comparo cual es el jugador con mas puntaje...");
+        int ganador = nuevo_juego.puntaje_masAlto();
+        if (ganador != 0) {
+            System.out.println("Entonces se declara como ganador al jugador: " + ganador + "!!!");
+        }else {
+            System.out.println("Se declara entonces un empate por tener la misma puntuacion");
+        }
     }
 }
