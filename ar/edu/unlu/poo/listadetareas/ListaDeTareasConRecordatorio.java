@@ -1,7 +1,5 @@
 package ar.edu.unlu.poo.listadetareas;
 
-import ar.edu.unlu.poo.lista.Nodo;
-
 import java.time.LocalDate;
 
 public class ListaDeTareasConRecordatorio {

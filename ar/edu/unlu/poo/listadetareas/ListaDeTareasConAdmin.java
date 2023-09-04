@@ -3,7 +3,7 @@ package ar.edu.unlu.poo.listadetareas;
 import java.time.LocalDate;
 
 public class ListaDeTareasConAdmin {
-    //Esta tarea reutilizara el NodoTareaConRecordatorio
+    //AVISO: Esta tarea reutilizara el NodoTareaConRecordatorio
     // ya que no son necesarias modificaciones en el nodo
     NodoTareaConRecordatorio prioridad = null;
     //la tarea con mas prioridad es el primer elemento de la lista
