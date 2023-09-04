@@ -142,15 +142,15 @@ public class ListaDeTareasConRecordatorio {
         } else {
             while (nodoAux != null) {
                 if (nodoAux.getEstado().equals(EstadoTarea.VENCIDA)){
-                    acumulador += "\n " + i + "- (vencida)" + nodoAux.getDescripcion();
+                    acumulador += "\n " + i + "- (vencida)" + nodoAux.getDescripcion() + " | Fecha limite: " + nodoAux.getFechaLimite() + " | Fecha recordatorio: " + nodoAux.getRecordatorio();
                 } else if ( nodoAux.getEstado().equals(EstadoTarea.COMPLETA)) {
-                    acumulador += "\n " + i + "- (completa)" + nodoAux.getDescripcion();
+                    acumulador += "\n " + i + "- (completa)" + nodoAux.getDescripcion()+ " | Fecha limite: " + nodoAux.getFechaLimite() + " | Fecha recordatorio: " + nodoAux.getRecordatorio();
                 }
                 else if (nodoAux.getRecordatorio().isAfter(LocalDate.now()) || nodoAux.getRecordatorio().isEqual(LocalDate.now())){
-                    acumulador += "\n " + i + "- (por vencer)" + nodoAux.getDescripcion();
+                    acumulador += "\n " + i + "- (por vencer)" + nodoAux.getDescripcion()+ " | Fecha limite: " + nodoAux.getFechaLimite() + " | Fecha recordatorio: " + nodoAux.getRecordatorio();
                 }
                 else {
-                    acumulador += "\n " + i + "-" + nodoAux.getDescripcion();
+                    acumulador += "\n " + i + "-" + nodoAux.getDescripcion()+ " | Fecha limite: " + nodoAux.getFechaLimite() + " | Fecha recordatorio: " + nodoAux.getRecordatorio();
                 }
                 i++;
                 nodoAux = nodoAux.getSiguiente();

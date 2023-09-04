@@ -142,11 +142,11 @@ public class ListaDeTareas {
         } else {
             while (nodoAux != null) {
                 if (nodoAux.getEstado().equals(EstadoTarea.VENCIDA)){
-                    acumulador += "\n " + i + "- (vencida)" + nodoAux.getDescripcion();
+                    acumulador += "\n " + i + "- (vencida)" + nodoAux.getDescripcion() + " | Fecha limite: " + nodoAux.getFechaLimite();
                 } else if ( nodoAux.getEstado().equals(EstadoTarea.COMPLETA)) {
-                    acumulador += "\n " + i + "- (completa)" + nodoAux.getDescripcion();
+                    acumulador += "\n " + i + "- (completa)" + nodoAux.getDescripcion() + " | Fecha limite: " + nodoAux.getFechaLimite();
                 } else {
-                acumulador += "\n " + i + "-" + nodoAux.getDescripcion();
+                acumulador += "\n " + i + "-" + nodoAux.getDescripcion() + " | Fecha limite: " + nodoAux.getFechaLimite();
                 }
                 i++;
                 nodoAux = nodoAux.getSiguiente();
