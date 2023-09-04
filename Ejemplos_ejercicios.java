@@ -625,7 +625,6 @@ public class Ejemplos_ejercicios {
             System.out.println("Error al agregar");
         }
 
-        System.out.println("\nCompruebo que el resto de funciones siguen andando con las nuevas modificaciones...");
         System.out.println("\nCompruebo cuales tareas estan completas: ");
         for (int i = 1; i <= 4; i++) {
             System.out.print("\n" + i + "-");
@@ -636,7 +635,7 @@ public class Ejemplos_ejercicios {
             }
         }
 
-        System.out.print("\nCompruebo cuales tareas estan vencidas: ");
+        System.out.println("\nCompruebo cuales tareas estan vencidas: ");
         for (int i = 1; i <= 4; i++) {
             System.out.print("\n" + i + "-");
             if (listaT_Mod.esta_vencida(i)) {
@@ -651,10 +650,10 @@ public class Ejemplos_ejercicios {
         System.out.println("contenido de la lista de tareas (en orden de prioridad): " + listaT_Mod);
 
         System.out.println("\nLe cambio la prioridad a la ultima tarea: ");
-        listaT_Mod.cambiar_prioridad(1, 4);
+        listaT_Mod.cambiar_prioridad(1, 5);
         System.out.println("contenido de la lista de tareas: " + listaT_Mod);
         System.out.println("\n ahora vuelvo las tareas a su prioridad original: ");
-        listaT_Mod.cambiar_prioridad(4, 1);
+        listaT_Mod.cambiar_prioridad(5, 1);
         System.out.println("contenido de la lista de tareas: " + listaT_Mod);
 
         System.out.println("\nFUNCIONES NUEVAS...");
@@ -662,14 +661,14 @@ public class Ejemplos_ejercicios {
         listaT_Mod.tarea_realizada(2);
         System.out.println("Compruebo que se realizo la tarea: " + listaT_Mod);
 
-        System.out.println("\nBusco por descripcion a la tarea 3...");
+        System.out.println("\nBusco por descripcion a la tarea 5...");
         listaT_Mod.buscar_porDescripcion("Consultar repuesto del auto");
 
-        System.out.println("Creo una nueva lista y pido que tenga a la lista de tareas anterior pero ordenada por las no vencidas y por prioridad: ");
+        System.out.println("\nCreo una nueva lista y pido que tenga a la lista de tareas anterior pero ordenada por las no vencidas y por prioridad: ");
         ListaDeTareasConAdmin listaOrdenNoVencidas = listaT_Mod.lista_ordenadaNoVencidas();
         System.out.println("Contenido de la lista ordenada por no vencidas..." + listaOrdenNoVencidas);
 
-        System.out.println("Ahora creo otra nueva lista y pido que tenga de la lista de tareas principal a las tareas no vencidas pero ordenadas por fecha de vencimiento: ");
+        System.out.println("\nAhora creo otra nueva lista y pido que tenga de la lista de tareas principal a las tareas no vencidas pero ordenadas por fecha de vencimiento: ");
         ListaDeTareasConAdmin listaOrdenFecha = listaT_Mod.lista_ordenada_porFecha();
         System.out.println("Contenido de la lista ordenada por fecha..." + listaOrdenFecha);
     }
