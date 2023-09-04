@@ -177,9 +177,13 @@ public class ListaDeTareasConAdmin {
         return lista_ordenada;
     }
 
-    private void agregar_noVencidas(NodoTareaConRecordatorio nuevo_nodo){
+    private void agregar_noVencidas(NodoTareaConRecordatorio nodoAux){
         //deja el mismo orden de prioridad que tenia la lista anterior
-        nuevo_nodo.setSiguiente(null);
+        NodoTareaConRecordatorio nuevo_nodo = new NodoTareaConRecordatorio();
+        nuevo_nodo.setDescripcion(nodoAux.getDescripcion());
+        nuevo_nodo.setFechaLimite(nodoAux.getRecordatorio());
+        nuevo_nodo.setEstado(nodoAux.getEstado());
+        nuevo_nodo.setFechaLimite(nodoAux.getFechaLimite());
         if (prioridad == null){
             prioridad = nuevo_nodo;
         }else {
@@ -233,7 +237,12 @@ public class ListaDeTareasConAdmin {
         return lista_ordenada;
     }
 
-    private void agregar_ordenFecha(NodoTareaConRecordatorio nuevo_nodo){
+    private void agregar_ordenFecha(NodoTareaConRecordatorio nodoAux){
+        NodoTareaConRecordatorio nuevo_nodo = new NodoTareaConRecordatorio();
+        nuevo_nodo.setDescripcion(nodoAux.getDescripcion());
+        nuevo_nodo.setFechaLimite(nodoAux.getRecordatorio());
+        nuevo_nodo.setEstado(nodoAux.getEstado());
+        nuevo_nodo.setFechaLimite(nodoAux.getFechaLimite());
         if (prioridad == null){
             prioridad = nuevo_nodo;
         }else {

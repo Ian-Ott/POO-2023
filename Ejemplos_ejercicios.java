@@ -8,6 +8,7 @@ import ar.edu.unlu.poo.lista.ListaEnlazadaDoble;
 
 import ar.edu.unlu.poo.listadetareas.EstadoTarea;
 import ar.edu.unlu.poo.listadetareas.ListaDeTareas;
+import ar.edu.unlu.poo.listadetareas.ListaDeTareasConAdmin;
 import ar.edu.unlu.poo.listadetareas.ListaDeTareasConRecordatorio;
 import ar.edu.unlu.poo.password.Contrasenia;
 import ar.edu.unlu.poo.pila.Pila;
@@ -55,7 +56,7 @@ public class Ejemplos_ejercicios {
                 ejemplo_11();
                 break;
             case 12:
-                //ejemplo_12();
+                ejemplo_12();
                 break;
             case 13:
                 //ejemplo_13();
@@ -81,6 +82,7 @@ public class Ejemplos_ejercicios {
         System.out.println("11-Ejercicio 11 - Juego De Palabras");
         System.out.println("12-Ejercicio 12 - Administrador De Tareas");
         System.out.println("13-Ejercicio 13 - Extension ToDoList");
+        System.out.println("AVISO: VUELVA A EJECUTAR EL MAIN SI LUEGO QUIERE VER OTRO EJERCICIO");
     }
 
     private static int seleccionar_opcion() {
@@ -225,7 +227,7 @@ public class Ejemplos_ejercicios {
         System.out.println("La responsabilidad del primer nodo es la de contener la base de la pila y conectar al resto de nodos. La resposnabilidad del tope es parecida solo que este contiene el dato del tope de la pila por el cual se realizan las operaciones principales. Mientras que la pila en si misma se responsabiliza por realizar las operaciones clave para que funcione la pila como debe");
 
     }
-    public static String pila_mostrar(Pila pila){
+    private static String pila_mostrar(Pila pila){
         String acumulador = "";
         Object dato_actual;
         Integer i = pila.longitud();
@@ -401,7 +403,7 @@ public class Ejemplos_ejercicios {
 
     }
 
-    public static void ejemplo_7(){
+    private static void ejemplo_7(){
         System.out.println("Ejemplos de Ecuaciones: ");
         System.out.println("\nCreo y agrego los valores de la ecuacion... ");
         EcuacionSegundoGrado ecuacion = new EcuacionSegundoGrado();
@@ -454,7 +456,7 @@ public class Ejemplos_ejercicios {
         }
     }
 
-    public static void ejemplo_8(){
+    private static void ejemplo_8(){
         System.out.println("Ejemplos del generador de contrasenias (esta limitado a generar 10 contrasenias pero se le puede cambiar el limite): ");
         System.out.println("\nGenero contrasenias por su longitud por defecto...");
         Contrasenia conjunto1 = new Contrasenia();
@@ -477,7 +479,7 @@ public class Ejemplos_ejercicios {
         System.out.println("\nContrasenias regeneradas: ");
         conjunto2.mostrar_contrasenias(contrasenias2);
     }
-    public static void ejemplo_9(){
+    private static void ejemplo_9(){
         System.out.println("Ejemplos de las operaciones con fechas: ");
         System.out.println("Establezco una fecha como determinada...");
         OperacionesF fecha_determinada = new OperacionesF();
@@ -568,7 +570,7 @@ public class Ejemplos_ejercicios {
 
     }
 
-    public static void ejemplo_11(){
+    private static void ejemplo_11(){
         System.out.println("Ejemplos del juego de palabras: ");
         System.out.println("En este ejemplo cada jugador va a agregar 5 palabras y segun los puntos que consiga cada uno se va a determinar al ganador. ");
 
@@ -599,5 +601,76 @@ public class Ejemplos_ejercicios {
         }else {
             System.out.println("Se declara entonces un empate por tener la misma puntuacion");
         }
+    }
+    private static void ejemplo_12() {
+        System.out.println("Ejemplo de Lista de tareas con administrador de tareas:");
+        System.out.println("\nPruebo las antiguas funciones...");
+        ListaDeTareasConAdmin listaT_Mod = new ListaDeTareasConAdmin();
+
+        if (listaT_Mod.es_vacia()) {
+            System.out.println("\nLa lista de tareas esta vacia");
+        }
+
+        System.out.println("\nAgrego tareas a la lista...");
+        listaT_Mod.agregar_tarea("completar el ejercicio 5", LocalDate.of(2023, 8, 30), EstadoTarea.INCOMPLETA, LocalDate.of(2023, 8, 28));
+        listaT_Mod.agregar_tarea("Ir al supermercado mañana", LocalDate.of(2023, 9, 7), EstadoTarea.INCOMPLETA, LocalDate.of(2023, 9,6));
+        listaT_Mod.agregar_tarea("Consultar repuesto del auto", LocalDate.of(2023, 9, 5), EstadoTarea.COMPLETA, LocalDate.of(2023, 9, 3));
+        listaT_Mod.agregar_tarea("Ir al cine a ver la nueva pelicula de marvel", LocalDate.of(2023, 9, 5), EstadoTarea.INCOMPLETA, LocalDate.of(2023, 9, 4));
+        listaT_Mod.agregar_tarea("Estudiar para el parcial de POO", LocalDate.of(2023, 11, 1), EstadoTarea.INCOMPLETA, LocalDate.of(2023, 10, 18));
+
+
+        if (!listaT_Mod.es_vacia()) {
+            System.out.println("La lista de tareas no esta vacia.\nContenido de la lista de tareas(en orden de prioridad): " + listaT_Mod);
+        } else {
+            System.out.println("Error al agregar");
+        }
+
+        System.out.println("\nCompruebo que el resto de funciones siguen andando con las nuevas modificaciones...");
+        System.out.println("\nCompruebo cuales tareas estan completas: ");
+        for (int i = 1; i <= 4; i++) {
+            System.out.print("\n" + i + "-");
+            if (listaT_Mod.esta_completa(i)) {
+                System.out.print("Esta completa");
+            } else {
+                System.out.print("Esta incompleta");
+            }
+        }
+
+        System.out.print("\nCompruebo cuales tareas estan vencidas: ");
+        for (int i = 1; i <= 4; i++) {
+            System.out.print("\n" + i + "-");
+            if (listaT_Mod.esta_vencida(i)) {
+                System.out.print("Esta vencida");
+            } else {
+                System.out.print("No esta vencida");
+            }
+        }
+
+        System.out.println("\nLe cambio la descripcion a la primera tarea: ");
+        listaT_Mod.cambiar_descripcion("Entregar el TP de POO", 1);
+        System.out.println("contenido de la lista de tareas (en orden de prioridad): " + listaT_Mod);
+
+        System.out.println("\nLe cambio la prioridad a la ultima tarea: ");
+        listaT_Mod.cambiar_prioridad(1, 4);
+        System.out.println("contenido de la lista de tareas: " + listaT_Mod);
+        System.out.println("\n ahora vuelvo las tareas a su prioridad original: ");
+        listaT_Mod.cambiar_prioridad(4, 1);
+        System.out.println("contenido de la lista de tareas: " + listaT_Mod);
+
+        System.out.println("\nFUNCIONES NUEVAS...");
+        System.out.println("Realizo la tarea 2...");
+        listaT_Mod.tarea_realizada(2);
+        System.out.println("Compruebo que se realizo la tarea: " + listaT_Mod);
+
+        System.out.println("\nBusco por descripcion a la tarea 3...");
+        listaT_Mod.buscar_porDescripcion("Consultar repuesto del auto");
+
+        System.out.println("Creo una nueva lista y pido que tenga a la lista de tareas anterior pero ordenada por las no vencidas y por prioridad: ");
+        ListaDeTareasConAdmin listaOrdenNoVencidas = listaT_Mod.lista_ordenadaNoVencidas();
+        System.out.println("Contenido de la lista ordenada por no vencidas..." + listaOrdenNoVencidas);
+
+        System.out.println("Ahora creo otra nueva lista y pido que tenga de la lista de tareas principal a las tareas no vencidas pero ordenadas por fecha de vencimiento: ");
+        ListaDeTareasConAdmin listaOrdenFecha = listaT_Mod.lista_ordenada_porFecha();
+        System.out.println("Contenido de la lista ordenada por fecha..." + listaOrdenFecha);
     }
 }
