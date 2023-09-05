@@ -451,6 +451,28 @@ public class Ejemplos_ejercicios {
             j++;
             System.out.println("y" + j + "=" + y2.get(i));
         }
+
+        System.out.println("\n Pruebo por ultima vez con otros valores (creando una nueva ecuacion)...");
+        EcuacionSegundoGrado ecuacion3 = new EcuacionSegundoGrado();
+        a = -3;
+        b = 1;
+        c = -1;
+        ecuacion3.Establecer_valores(a,b,c);
+        System.out.println("Los valores agregados fueron: a =" + a + " ,b =" + b + " ,c =" + c);
+
+        System.out.println("\n calculo las raices...");
+        ArrayList <Integer> raices3 = ecuacion3.calcular_raiz();
+        j = 0;
+        if (raices3.isEmpty()){
+            System.out.println("Entonces no se encontraron raices...");
+        }else {
+        for (int i = 0; i < raices3.size(); i++){
+            j++;
+            System.out.println("X" + j + "=" + raices3.get(i));
+        }
+        }
+
+        System.out.println("\nComo las raices no son reales no voy a calcular la y porque se trabaja de reales en reales.");
     }
 
     private static void ejemplo_8(){

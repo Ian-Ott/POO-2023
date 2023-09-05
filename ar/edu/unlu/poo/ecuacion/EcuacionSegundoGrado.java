@@ -28,7 +28,7 @@ public class EcuacionSegundoGrado {
             return null;
         } else {
             double calculo = (pow(bAUX, 2)) - (4 * aAUX * cAUX);
-            if ((calculo != 0 )) {
+            if ((calculo > 0 )) {
                 raiz1 = (int) (((-bAUX) + sqrt(calculo)));
                 raiz1 = raiz1 / (2 * aAUX);
                 raiz2 = (int) (((-bAUX) - sqrt(calculo)));
@@ -36,10 +36,12 @@ public class EcuacionSegundoGrado {
                 raices.add(raiz1);
                 raices.add(raiz2);
                 valores.setRaices(raices);
-            }else {
+            } else if (calculo == 0) {
                 raiz1 = (int) ((-bAUX + sqrt(calculo)) / (2 * aAUX));
                 raices.add(raiz1);
                 valores.setRaices(raices);
+            } else {
+                System.out.println("\nLa ecuacion no tiene raices reales");
             }
         }
         return raices;
