@@ -5,15 +5,13 @@ import java.time.format.DateTimeFormatter;
 
 public class OperacionesF {
     Fecha elegida = new Fecha();
-    public String fecha_transformada (int formato){
-        LocalDate fechaAux = elegida.getFecha_det();
-        String acumulador = "";
+    public LocalDate fecha_transformada (String fecha, int formato){
         if (formato == 1){
-            acumulador += "Fecha: " + fechaAux.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            return LocalDate.parse(fecha,DateTimeFormatter.ofPattern("dd-MM-yyyy") );
         }else if (formato == 2){
-            acumulador += "Fecha: " + fechaAux.format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
+            return LocalDate.parse(fecha,DateTimeFormatter.ofPattern("MM-dd-yyyy") );
         }
-        return acumulador;
+        return null;
     }
 
     public void establecer_fecha(LocalDate fecha){

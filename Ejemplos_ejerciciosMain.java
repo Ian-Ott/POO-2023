@@ -504,12 +504,13 @@ public class Ejemplos_ejerciciosMain {
         OperacionesF fecha_determinada = new OperacionesF();
         fecha_determinada.establecer_fecha(LocalDate.parse("2023-08-13"));
 
-        String fecha = fecha_determinada.fecha_transformada(1);
+        System.out.println("\npido transformar un string con formato especifico a fecha...");
+        LocalDate fecha = fecha_determinada.fecha_transformada("06-09-2023", 1);
         System.out.println("\n Muestro la fecha transformada a string (formato: dd-MM-yyyy): " + fecha);
 
-        fecha = fecha_determinada.fecha_transformada(2);
-        System.out.println("ahora muestro la fecha con otro formato (MM-dd-yyyy): " + fecha);
-        System.out.println("\nCompruebo si la fecha es menor a 14-8-2023: ");
+        fecha = fecha_determinada.fecha_transformada("12-09-2023",2);
+        System.out.println("ahora transformo otro String con otro formato (MM-dd-yyyy): " + fecha);
+        System.out.println("\nCompruebo si la fecha creada al principio es menor a 14-8-2023: ");
         if (fecha_determinada.fecha_menor(LocalDate.parse("2023-08-14"))){
             System.out.println("\nLa "+ fecha_determinada + " es menor");
         }else{
