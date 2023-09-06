@@ -595,6 +595,17 @@ public class Ejemplos_ejercicios {
 
         System.out.println("\nCreo los dos jugadores...");
         Juego nuevo_juego = new Juego();
+        System.out.println("\nAntes de empezar primero agrego las palabras validas al diccionario...");
+        nuevo_juego.agregar_palabrasAlDiccionario("ornitorrinco");
+        nuevo_juego.agregar_palabrasAlDiccionario("zanahoria");
+        nuevo_juego.agregar_palabrasAlDiccionario("zapatos");
+        nuevo_juego.agregar_palabrasAlDiccionario("zapatillas");
+        nuevo_juego.agregar_palabrasAlDiccionario("queso");
+        nuevo_juego.agregar_palabrasAlDiccionario("kiwi");
+        nuevo_juego.agregar_palabrasAlDiccionario("amarillo");
+        nuevo_juego.agregar_palabrasAlDiccionario("perro");
+        nuevo_juego.agregar_palabrasAlDiccionario("hielo");
+        nuevo_juego.agregar_palabrasAlDiccionario("gato");
 
         System.out.println("\nEl jugador 1 empezara agregando sus 5 palabras...");
         nuevo_juego.agregar_palabras("zanahoria", 1);

@@ -1,16 +1,20 @@
 package ar.edu.unlu.poo.juegoPalabras;
 
+import java.util.ArrayList;
+
 public class Juego {
     Jugador jugador1 = new Jugador();
     Jugador jugador2 = new Jugador();
+    PalabrasPermitidas diccionario = new PalabrasPermitidas();
     public void agregar_palabras(String palabra, int jugador){
         boolean palabra_valida = false;
+        ArrayList<String> diccionarioAux = diccionario.getDiccionario();
         int puntaje_consegido = 0;
         int puntaje_total = 0;
         palabra = palabra.toLowerCase();
         if (jugador == 1) {
-            for (int i = 0; i < PalabrasPermitidas.diccionario.length; i++) {
-                if (palabra.equals(PalabrasPermitidas.diccionario[i])) {
+            for (int i = 0; i < diccionarioAux.size(); i++) {
+                if (palabra.equals(diccionarioAux.get(i))) {
                     palabra_valida = true;
                     puntaje_consegido += palabra.length();
                     puntaje_consegido += cantidad_letrasEspeciales(palabra);
@@ -20,8 +24,8 @@ public class Juego {
                 }
             }
         } else if (jugador == 2) {
-            for (int i = 0; i < PalabrasPermitidas.diccionario.length; i++) {
-                if (palabra.equals(PalabrasPermitidas.diccionario[i])) {
+            for (int i = 0; i < diccionarioAux.size(); i++) {
+                if (palabra.equals(diccionarioAux.get(i))) {
                     palabra_valida = true;
                     puntaje_consegido += palabra.length();
                     puntaje_consegido += cantidad_letrasEspeciales(palabra);
@@ -84,6 +88,21 @@ public class Juego {
             puntaje += 1;
             }
         return puntaje;
+    }
+
+    public  void agregar_palabrasAlDiccionario(String palabra_nueva){
+        ArrayList<String> diccionarioAux = diccionario.getDiccionario();
+        if (diccionarioAux.isEmpty()){
+            diccionario.setDiccionario(palabra_nueva);
+        }else {
+            for (int i = 0; i < diccionarioAux.size();i++){
+                if (diccionarioAux.get(i).equals(palabra_nueva)){
+                    System.out.println("La palabra ya estaba en el diccionario");
+                    return;
+                }
+            }
+            diccionario.setDiccionario(palabra_nueva);
+        }
     }
 }
 

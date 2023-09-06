@@ -1,6 +1,17 @@
 package ar.edu.unlu.poo.juegoPalabras;
 
+import java.util.ArrayList;
+
 public class PalabrasPermitidas {
-    //solo tiene algunas palabras para el ejemplo
-    public static String[] diccionario = {"ornitorrinco", "xilofono", "saxofon", "kiwi", "zanahoria", "kilogramo", "queso", "equipo", "quemado", "zapatos", "zapatillas", "amarillo", "blanco", "gato", "azul", "perro", "fideos", "comida", "mesa", "biblioteca", "lista", "hielo"};
+    //puse para que se puedan cargar las palabras porque asi lo piden
+    // sino yo lo habia implementado de otra manera
+    private ArrayList<String> diccionario = new ArrayList<>();
+
+    public void setDiccionario(String palabra) {
+        diccionario.add(palabra);
+    }
+
+    public ArrayList<String> getDiccionario() {
+        return diccionario;
+    }
 }
