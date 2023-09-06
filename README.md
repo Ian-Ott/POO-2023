@@ -6,7 +6,7 @@
 
 **Notas sobre los ejercicios de lista de tareas**:
 
-1- El diagrama de clase lo subi como archivo .docx y desde Intellij se puede abrir el archivo dandole doble click y abre el archivo desde otra app.
+1- El diagrama de clase (del ejercicio 5) lo subi como archivo .docx y desde Intellij se puede abrir el archivo dandole doble click y abre el archivo desde otra app.
 
 2-Para cada ejercicio de lista de tareas cree clases nuevas con los cambios implementados  y los anteriores cambios en cada uno. Aunque tambien en los ejemplos de esos ejercicios vuelvo a probar las anteriores funciones (Los print indican en donde se utilizan las funciones nuevas) 
 
