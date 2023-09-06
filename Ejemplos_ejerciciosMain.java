@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Ejemplos_ejercicios {
+public class Ejemplos_ejerciciosMain {
     public static void main(String[] args){
         menu();
         int opcion = seleccionar_opcion();
