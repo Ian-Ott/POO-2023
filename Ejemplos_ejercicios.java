@@ -322,7 +322,7 @@ public class Ejemplos_ejercicios {
 
         System.out.println("\nAgrego tareas a la lista...");
         listaT.agregar_tarea("completar el ejercicio 5", LocalDate.of(2023, 8, 30), EstadoTarea.INCOMPLETA);
-        listaT.agregar_tarea("Ir al supermercado mañana", LocalDate.of(2023, 9, 7), EstadoTarea.INCOMPLETA);
+        listaT.agregar_tarea("Ir al supermercado mañana", LocalDate.of(2023, 9, 10), EstadoTarea.INCOMPLETA);
         listaT.agregar_tarea("Consultar repuesto del auto", LocalDate.of(2023, 9, 5), EstadoTarea.COMPLETA);
         listaT.agregar_tarea("Ir al cine a ver la nueva pelicula de marvel", LocalDate.of(2023, 9, 5), EstadoTarea.INCOMPLETA);
 
